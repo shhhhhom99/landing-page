@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>DRAVIDA — Sacred Permanence</title>
+<meta name="description" content="An odyssey through the petrified prayers and granite echoes of South India's temple complexes.">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">try{
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-high": "#ebe8e2",
+          "on-surface": "#1c1c18",
+          "secondary-fixed": "#ffe088",
+          "on-primary-fixed-variant": "#783022",
+          "inverse-on-surface": "#f3f0ea",
+          "primary-fixed": "#ffdad3",
+          "outline-variant": "#dac1bc",
+          "error": "#ba1a1a",
+          "on-tertiary-fixed-variant": "#474747",
+          "on-tertiary-fixed": "#1b1c1c",
+          "on-secondary-container": "#745c00",
+          "on-primary-container": "#ffbaac",
+          "secondary-container": "#fed65b",
+          "secondary-fixed-dim": "#e9c349",
+          "background": "#fcf9f3",
+          "surface-container-highest": "#e5e2dc",
+          "tertiary": "#3e3e3e",
+          "on-primary-fixed": "#3e0501",
+          "error-container": "#ffdad6",
+          "surface": "#fcf9f3",
+          "on-secondary": "#ffffff",
+          "on-error": "#ffffff",
+          "on-background": "#1c1c18",
+          "surface-container-lowest": "#ffffff",
+          "outline": "#87726e",
+          "primary-container": "#8b3e2f",
+          "surface-bright": "#fcf9f3",
+          "inverse-surface": "#31312d",
+          "tertiary-fixed": "#e4e2e2",
+          "primary": "#6d281a",
+          "on-secondary-fixed-variant": "#574500",
+          "on-primary": "#ffffff",
+          "on-surface-variant": "#55433f",
+          "surface-container-low": "#f6f3ed",
+          "on-tertiary-container": "#cbcac9",
+          "primary-fixed-dim": "#ffb4a5",
+          "surface-dim": "#dcdad4",
+          "inverse-primary": "#ffb4a5",
+          "tertiary-fixed-dim": "#c8c6c6",
+          "surface-tint": "#964737",
+          "secondary": "#735c00",
+          "surface-container": "#f0eee8",
+          "tertiary-container": "#555555",
+          "surface-variant": "#e5e2dc",
+          "on-tertiary": "#ffffff",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#241a00"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "max-width": "1280px",
+          "unit": "8px",
+          "gutter": "24px",
+          "margin-mobile": "20px",
+          "margin-desktop": "80px"
+        },
+        "fontFamily": {
+          "headline-md": ["Bodoni Moda"],
+          "display-lg": ["Bodoni Moda"],
+          "display-lg-mobile": ["Bodoni Moda"],
+          "label-sm": ["Work Sans"],
+          "body-md": ["Work Sans"],
+          "body-lg": ["Work Sans"]
+        },
+        "fontSize": {
+          "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+          "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+}catch(_e){}</script>
+<style>
+  .ornate-divider {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 40px 0;
+  }
+  .ornate-divider::before,
+  .ornate-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #dac1bc, transparent);
+  }
+  .ornate-symbol {
+    color: #87726e;
+  }
+  .etched-border {
+    box-shadow: inset 0 0 0 1px rgba(135,114,110,0.25);
+  }
+  .stone-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dac1bc' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Gallery lightbox */
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .gallery-lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .gallery-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 2px solid rgba(218,193,188,0.3);
+  }
+  .gallery-lightbox .close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: white;
+    cursor: pointer;
+    font-size: 36px;
+    z-index: 101;
+    transition: transform 0.3s;
+  }
+  .gallery-lightbox .close-btn:hover {
+    transform: rotate(90deg);
+  }
+  .gallery-lightbox .caption {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    max-width: 80vw;
+  }
+
+  /* Gallery grid hover */
+  .gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .gallery-item img {
+    transition: transform 0.7s ease, filter 0.7s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.08);
+    filter: grayscale(0);
+  }
+  .gallery-item .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(109,40,26,0.6) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  .gallery-item .gallery-overlay span {
+    color: white;
+    font-family: 'Bodoni Moda', serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+
+<!-- Lightbox -->
+<div class="gallery-lightbox" id="lightbox">
+    <span class="material-symbols-outlined close-btn" id="lightbox-close">close</span>
+    <img id="lightbox-img" src="" alt="">
+    <div class="caption" id="lightbox-caption"></div>
+</div>
+
+<!-- TopNavBar -->
+<nav class="bg-background/90 backdrop-blur-md fixed top-0 z-50 w-full border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-max-width mx-auto">
+<a href="#" class="font-headline-md text-headline-md text-primary tracking-tighter no-underline">DRAVIDA</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-headline-md text-label-sm uppercase tracking-widest" href="#eras">Eras</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-headline-md text-label-sm uppercase tracking-widest" href="#temples">Temples</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-headline-md text-label-sm uppercase tracking-widest" href="#artisans">Artisans</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-headline-md text-label-sm uppercase tracking-widest" href="#archives">Archives</a>
+</div>
+<a href="#gallery" class="bg-primary text-secondary-fixed px-6 py-2 rounded-lg font-label-sm uppercase tracking-widest hover:bg-primary-container transition-all etched-border no-underline inline-block">
+    Explore
+</a>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-primary/40 mix-blend-multiply z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20"></div>
+<!-- PC hero: temple corridor (image 1) -->
+<img alt="Ancient Dravidian temple corridor" class="w-full h-full object-cover scale-105 hidden md:block" src="1.jpg">
+<!-- Mobile hero: relief sculpture (image 3) -->
+<img alt="Ancient Dravidian stone relief sculpture" class="w-full h-full object-cover scale-105 block md:hidden" src="3.jpg">
+</div>
+<div class="relative z-30 text-center px-margin-mobile max-w-4xl mx-auto" id="hero-content">
+<span class="font-label-sm text-secondary-fixed uppercase tracking-[0.4em] mb-6 block opacity-0 translate-y-4 transition-all duration-1000" id="hero-tag">Venerable Legacies</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight opacity-0 translate-y-8 transition-all duration-1000 delay-300" id="hero-title">
+    Sacred Permanence
+</h1>
+<p class="font-body-lg text-surface-container-high max-w-2xl mx-auto opacity-0 translate-y-4 transition-all duration-1000 delay-500" id="hero-desc">
+    An odyssey through the petrified prayers and granite echoes of South India's temple complexes, where every chisel stroke captures the infinite.
+</p>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 animate-bounce">
+<span class="material-symbols-outlined text-white text-4xl">expand_more</span>
+</div>
+</header>
+
+<main class="relative bg-background">
+
+<!-- Artisanship Section -->
+<section id="artisans" class="py-24 px-margin-desktop max-w-max-width mx-auto fade-in-section">
+<div class="grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 order-2 md:order-1">
+<div class="relative group p-4 border border-outline-variant/30">
+<img alt="Intricate stone carving details" class="w-full grayscale hover:grayscale-0 transition-all duration-700" src="7.jpg">
+<div class="absolute inset-0 border-2 border-primary/20 -m-4 pointer-events-none group-hover:m-0 transition-all duration-500"></div>
+</div>
+</div>
+<div class="md:col-span-6 md:col-start-7 order-1 md:order-2 mb-12 md:mb-0">
+<span class="font-label-sm text-primary uppercase tracking-widest mb-4 block">The Chisel's Devotion</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Mastery in Granite</h2>
+<p class="font-body-lg text-on-surface-variant mb-8 leading-relaxed">
+    The precision of ancient Dravidian sculptors transcends mere craftsmanship; it was an act of meditative devotion. Working with stubborn granite, these artisans achieved a fluidity that mimics silk and skin, capturing subtle expressions that have weathered centuries of monsoon and sun.
+</p>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+<div>
+<h4 class="font-label-sm text-on-surface font-bold">Mathematical Symmetry</h4>
+<p class="text-on-surface-variant">Guided by the Shilpa Shastras, every proportion follows divine geometry.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">texture</span>
+<div>
+<h4 class="font-label-sm text-on-surface font-bold">Relief Intricacy</h4>
+<p class="text-on-surface-variant">High-relief techniques that create depth and narrative rhythm.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Ornate Divider -->
+<div class="ornate-divider px-margin-desktop max-w-max-width mx-auto">
+<div class="ornate-symbol">
+<span class="material-symbols-outlined text-3xl">temple_hindu</span>
+</div>
+</div>
+
+<!-- Iconography Section (Temples) -->
+<section id="temples" class="py-24 bg-surface-container-low relative overflow-hidden fade-in-section">
+<div class="stone-texture absolute inset-0"></div>
+<div class="px-margin-desktop max-w-max-width mx-auto relative z-10">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Divine Manifestations</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Decoding the silent language of mudras, asanas, and symbolic attributes of South Indian icons.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-16">
+<!-- Icon Card 1 -->
+<div class="flex flex-col gap-8">
+<div class="aspect-[3/4] bg-surface overflow-hidden etched-border relative group">
+<img alt="Nataraja statue in detailed iconography" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="6.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div>
+<span class="text-label-sm text-primary uppercase font-bold tracking-widest">Form &amp; Motion</span>
+<h3 class="font-headline-md text-2xl text-on-surface mt-2 mb-4">The Tandava Cycle</h3>
+<p class="text-on-surface-variant leading-relaxed">
+    The representation of Nataraja captures the cosmic dance of creation and destruction. Each limb is a philosophical statement—the drum of rhythm, the fire of change, and the hand of protection.
+</p>
+</div>
+</div>
+<!-- Icon Card 2 -->
+<div class="flex flex-col gap-8 md:translate-y-24">
+<div class="aspect-[3/4] bg-surface overflow-hidden etched-border relative group">
+<img alt="Intricate architectural relief" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="5.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div>
+<span class="text-label-sm text-primary uppercase font-bold tracking-widest">Symbolic Ornamentation</span>
+<h3 class="font-headline-md text-2xl text-on-surface mt-2 mb-4">Floral &amp; Mythic Motifs</h3>
+<p class="text-on-surface-variant leading-relaxed">
+    Beyond the central figures, the surrounding scrollwork—lotuses, makaras, and yalis—forms a rich tapestry of ecological and mythic symbiosis that frames the divine presence.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Eras / Timeline Section -->
+<section id="eras" class="py-24 px-margin-desktop max-w-max-width mx-auto fade-in-section">
+<div class="text-center mb-20">
+<span class="font-label-sm text-primary uppercase tracking-widest mb-4 block">Temporal Journey</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Chronicles of Stone</h2>
+</div>
+<div class="relative">
+<!-- Central Line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant/30 -translate-x-1/2 hidden md:block"></div>
+<div class="space-y-24">
+<!-- Era 1 -->
+<div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+<div class="mb-4 flex flex-col items-center md:items-end">
+<div class="w-full max-w-md bg-surface p-2 border border-outline-variant/30 shadow-sm mb-4 timeline-img-wrapper overflow-visible">
+<img alt="Pallava rock-cut temple at Mahabalipuram" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQHKyGgukgd6mkYXVxTlXAzx9lLUX-8yBKfGhCt2ErJaOVUTdt3CEaX21WYKqZh7_hXMvTu93_zPyiRQwaX-O8KJNZy-qcKJDwE1raldMRzXLIcfdsZ-n6rWLKkpgZOpP6llDTyG2aqsKurDiTTe5q19w6o-IQcYyysczRLbs_2w0XoXy8iWaNabm_m8rNjqYd1fqgu40NVMI_95speQqdilxmD-bjZiy23adaDjhrr_limGJYdC_jbT4lZon9mVBtDjmAMFe3UE0">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant mt-2">Monolithic Shore Temple, Mahabalipuram</p>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-2">The Rock-Cut Dawn</h3>
+<p class="text-on-surface-variant">Focused on the Pallava dynasty's monolithic structures, where mountains were carved into living shrines.</p>
+</div>
+</div>
+<div class="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-outline-variant text-primary font-label-sm shrink-0 order-1 md:order-2 mb-4 md:mb-0">
+  600
+</div>
+<div class="md:w-1/2 md:pl-12 order-3">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">600–750 CE</span>
+</div>
+</div>
+<!-- Era 2 -->
+<div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 md:text-right order-3 md:order-1">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">850–1200 CE</span>
+</div>
+<div class="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-outline-variant text-primary font-label-sm shrink-0 order-1 md:order-2 mb-4 md:mb-0">
+  850
+</div>
+<div class="md:w-1/2 md:pl-12 order-2 md:order-3">
+<div class="mb-4 flex flex-col items-center md:items-start">
+<div class="w-full max-w-md bg-surface p-2 border border-outline-variant/30 shadow-sm mb-4 timeline-img-wrapper overflow-visible">
+<img alt="Chola dynasty bronze sculpture and architecture" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMkAqExYnlb5viUFUkjyYetI7jNfmjYFffTpas0p1371Ex93-G8WyNObuJ7w0MHC1ZcPA9x0vPz5mA-fnR_smSl-sgra0od7EWnyJOme5xaNyBl8BfnxrrtVAL0ZNUFNYpgLomJruRRPjnpRyqMel4JdIRKvKQPOd8967Y32NejuFmUIZWKBhMIMpig9WCcHN5pkAwxyCWudVNszDE4veNGrKRoBaU9gKsWgd52v8dl5jkRMqncycUxLWNzESmlJM9p-Tv_WokQxM">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant mt-2">Nataraja Bronze &amp; Brihadisvara Gopuram</p>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-2">The Imperial Ascent</h3>
+<p class="text-on-surface-variant">The Chola golden age, known for grand gopurams and the pinnacle of bronze casting techniques.</p>
+</div>
+</div>
+</div>
+<!-- Era 3 -->
+<div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+<div class="mb-4 flex flex-col items-center md:items-end">
+<div class="w-full max-w-md bg-surface p-2 border border-outline-variant/30 shadow-sm mb-4 timeline-img-wrapper overflow-visible">
+<img alt="Hoysala dynasty soapstone carvings" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBz_omujXaJQfeIHtCRmKA2nFHPgJt5UYIA1yjg54uDsDOgUARZGhD7kuvoGym5IKEKF18_QdzAuFORUD3NKQkGFVoPk8RY4PoqS_AfXMsAHl0zMG7jttvkEEfiQnglR4aXtR0P1JKNCRr3Upc-vCV16sKlpqpsSw3Z-q2cLDzoMsh5Hrym8aSoH_C3K3uKUb6WvpQwV15uKazmrtT3ZX-Y49JZ2pPK6qQrDWwQALqqBp4gtdTzDdb33A2B11L9z9L4QCAmY41OhM">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant mt-2">Soapstone Friezes, Belur Complex</p>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-2">The Hoysala Intricacy</h3>
+<p class="text-on-surface-variant">Noted for soapstone carvings and stellate temple plans that pushed the limits of stone plasticity.</p>
+</div>
+</div>
+<div class="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-outline-variant text-primary font-label-sm shrink-0 order-1 md:order-2 mb-4 md:mb-0">
+  1000
+</div>
+<div class="md:w-1/2 md:pl-12 order-3">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">1000–1350 CE</span>
+</div>
+</div>
+<!-- Era 4 -->
+<div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 md:text-right order-3 md:order-1">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">1350–1565 CE</span>
+</div>
+<div class="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-outline-variant text-primary font-label-sm shrink-0 order-1 md:order-2 mb-4 md:mb-0">
+  1350
+</div>
+<div class="md:w-1/2 md:pl-12 order-2 md:order-3">
+<div class="mb-4 flex flex-col items-center md:items-start">
+<div class="w-full max-w-md bg-surface p-2 border border-outline-variant/30 shadow-sm mb-4 timeline-img-wrapper overflow-visible">
+<img alt="Vijayanagara Empire ruins at Hampi" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAwQtU1vI52m6w7ekAY3MSP_WdkW5jppM2vP-IrXm8hFVxvUsnsImAzY19aPCxof7IvLMXNv6yP1aYCMXw6zwYMllISgKaHA3FaF4y4Fd6qLFKaSLNnZZKPWZhlL41g2F_UOjl2YFE4ZAjq5SPTnFO7iG3Zw5wgcskPKiwQDRMxAUgg6d2VY6IhSc6kOn9G4WQqTT3Dof0LU166xzIArbmib8QuITYO1gWjgJcjZAfugAZjkyxH4-QLqaXcXum26BfLRH1hlLyj7Y">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant mt-2">Stone Chariot &amp; Mandapas, Hampi</p>
+</div>
+<h3 class="font-headline-md text-2xl text-primary mb-2">The Vijayanagara Grandeur</h3>
+<p class="text-on-surface-variant">Characterized by sprawling temple complexes and ornate pillared halls that defined the late medieval landscape.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Gallery Section (second-to-last) -->
+<section id="gallery" class="py-24 bg-surface-container-low relative overflow-hidden fade-in-section">
+<div class="stone-texture absolute inset-0"></div>
+<div class="px-margin-desktop max-w-max-width mx-auto relative z-10">
+<div class="text-center mb-16">
+    <span class="font-label-sm text-primary uppercase tracking-widest mb-4 block">Visual Archive</span>
+    <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Gallery of Stone</h2>
+    <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">A curated collection of sculptural and architectural marvels from across the Dravidian legacy.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+    <!-- Gallery Item 1 -->
+    <div class="gallery-item aspect-square etched-border" onclick="openLightbox(this)">
+        <img alt="Intricate stone carving details" class="w-full h-full object-cover grayscale" src="7.jpg">
+        <div class="gallery-overlay"><span>Stone Carvings</span></div>
+    </div>
+    <!-- Gallery Item 2 -->
+    <div class="gallery-item aspect-square etched-border md:row-span-2" onclick="openLightbox(this)">
+        <img alt="Nataraja statue" class="w-full h-full object-cover grayscale" src="6.jpg">
+        <div class="gallery-overlay"><span>Nataraja — The Cosmic Dancer</span></div>
+    </div>
+    <!-- Gallery Item 3 -->
+    <div class="gallery-item aspect-square etched-border" onclick="openLightbox(this)">
+        <img alt="Floral and mythic motifs relief" class="w-full h-full object-cover grayscale" src="5.jpg">
+        <div class="gallery-overlay"><span>Mythic Motifs</span></div>
+    </div>
+    <!-- Gallery Item 4 -->
+    <div class="gallery-item aspect-square etched-border" onclick="openLightbox(this)">
+        <img alt="Pallava rock-cut temple" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQHKyGgukgd6mkYXVxTlXAzx9lLUX-8yBKfGhCt2ErJaOVUTdt3CEaX21WYKqZh7_hXMvTu93_zPyiRQwaX-O8KJNZy-qcKJDwE1raldMRzXLIcfdsZ-n6rWLKkpgZOpP6llDTyG2aqsKurDiTTe5q19w6o-IQcYyysczRLbs_2w0XoXy8iWaNabm_m8rNjqYd1fqgu40NVMI_95speQqdilxmD-bjZiy23adaDjhrr_limGJYdC_jbT4lZon9mVBtDjmAMFe3UE0">
+        <div class="gallery-overlay"><span>Shore Temple, Mahabalipuram</span></div>
+    </div>
+    <!-- Gallery Item 5 -->
+    <div class="gallery-item aspect-square etched-border" onclick="openLightbox(this)">
+        <img alt="Chola dynasty bronze" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMkAqExYnlb5viUFUkjyYetI7jNfmjYFffTpas0p1371Ex93-G8WyNObuJ7w0MHC1ZcPA9x0vPz5mA-fnR_smSl-sgra0od7EWnyJOme5xaNyBl8BfnxrrtVAL0ZNUFNYpgLomJruRRPjnpRyqMel4JdIRKvKQPOd8967Y32NejuFmUIZWKBhMIMpig9WCcHN5pkAwxyCWudVNszDE4veNGrKRoBaU9gKsWgd52v8dl5jkRMqncycUxLWNzESmlJM9p-Tv_WokQxM">
+        <div class="gallery-overlay"><span>Chola Bronze &amp; Gopuram</span></div>
+    </div>
+    <!-- Gallery Item 6 -->
+    <div class="gallery-item aspect-square etched-border" onclick="openLightbox(this)">
+        <img alt="Hoysala soapstone carvings" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBz_omujXaJQfeIHtCRmKA2nFHPgJt5UYIA1yjg54uDsDOgUARZGhD7kuvoGym5IKEKF18_QdzAuFORUD3NKQkGFVoPk8RY4PoqS_AfXMsAHl0zMG7jttvkEEfiQnglR4aXtR0P1JKNCRr3Upc-vCV16sKlpqpsSw3Z-q2cLDzoMsh5Hrym8aSoH_C3K3uKUb6WvpQwV15uKazmrtT3ZX-Y49JZ2pPK6qQrDWwQALqqBp4gtdTzDdb33A2B11L9z9L4QCAmY41OhM">
+        <div class="gallery-overlay"><span>Belur Soapstone Friezes</span></div>
+    </div>
+    <!-- Gallery Item 7 -->
+    <div class="gallery-item aspect-square etched-border md:col-span-2" onclick="openLightbox(this)">
+        <img alt="Vijayanagara ruins at Hampi" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAwQtU1vI52m6w7ekAY3MSP_WdkW5jppM2vP-IrXm8hFVxvUsnsImAzY19aPCxof7IvLMXNv6yP1aYCMXw6zwYMllISgKaHA3FaF4y4Fd6qLFKaSLNnZZKPWZhlL41g2F_UOjl2YFE4ZAjq5SPTnFO7iG3Zw5wgcskPKiwQDRMxAUgg6d2VY6IhSc6kOn9G4WQqTT3Dof0LU166xzIArbmib8QuITYO1gWjgJcjZAfugAZjkyxH4-QLqaXcXum26BfLRH1hlLyj7Y">
+        <div class="gallery-overlay"><span>Stone Chariot, Hampi</span></div>
+    </div>
+    <!-- Gallery Item 8 — Hero Image -->
+    <div class="gallery-item aspect-square etched-border md:col-span-2" onclick="openLightbox(this)">
+        <img alt="Dravidian temple architecture" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpnqT_B3eGKnSPL0WcSeOXG3yBexO8lQssfMRS5Rf4yf0aLWkNPSIcHEzF0EY1iCflMQF4ccrnIsPQ6xfs2n8GNrP1gpQvntOeha3oyMY2mYqMFrY6HTvEj7pCPLRucJbcLidcnzRUwMd68ZvN3Ks0K7HHulqYRe9prFrtwZ767RveLhgmPfAj1Dsl9risSxeX8VkgME86mAGpGTxKgDJ0mdxZ1d3J1ANfN-Wg6Sdfs8wFNeJOARyecORLg6NBUA-hw5Q4ULEkANI">
+        <div class="gallery-overlay"><span>Temple Architecture</span></div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Newsletter / Archive Section -->
+<section id="archives" class="py-32 px-margin-desktop max-w-max-width mx-auto text-center fade-in-section">
+<div class="bg-surface-container-high p-12 md:p-24 border border-outline-variant/20 relative">
+<div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary -mt-2 -ml-2"></div>
+<div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary -mb-2 -mr-2"></div>
+<h2 class="font-display-lg text-headline-md text-on-surface mb-8">Enter the Archives</h2>
+<p class="font-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto">Join our curated circle to receive monthly explorations of rare archaeological findings and preservation updates.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto" onsubmit="event.preventDefault()">
+<input class="flex-grow bg-transparent border-b-2 border-outline focus:border-primary outline-none py-3 font-body-md text-on-surface transition-all" placeholder="Email Address" type="email">
+<button class="bg-primary text-white px-10 py-3 font-label-sm uppercase tracking-widest hover:bg-on-primary-fixed-variant transition-colors shadow-lg">Subscribe</button>
+</form>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant mt-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+    <img alt="Footer background — temple carvings" class="w-full h-full object-cover opacity-[0.08]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGSp91B4fTWpIQwE7Q7zxcyeDtAO-lE45Qsz5Y-QX1fr7qJYmE9QzxK93t5gWuHYZKO5XGAwbu8pfzO7xOA-WnMI0bSS1yswkyVZ6jgY-rnaEFpKptI16yqpId90ziwnmClqTMdf_ML3UfHqGJSymQqM0IL6ydGRwdtaO67ZfZ_2IzgdGNbOZcBZqMfoQvM9Rbi3tJX-DoOduPoeGpn0qV1J-xSau9n2XmXh83whas3EJHlIH5CkMFzUvZhyinihOXLaBNycntYAY">
+</div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full max-w-max-width mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md text-primary mb-2">DRAVIDA</div>
+<p class="text-body-md text-on-surface-variant opacity-70">© 2025 Sacred Permanence. Preserving the Dravidian Legacy.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12">
+<a class="text-on-surface-variant hover:text-on-surface hover:underline decoration-primary font-body-md transition-all" href="#eras">Historical Timeline</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline decoration-primary font-body-md transition-all" href="#gallery">Gallery</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline decoration-primary font-body-md transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:underline decoration-primary font-body-md transition-all" href="#archives">Contact Curator</a>
+</div>
+</div>
+</footer>
+
+<script>
+    // Hero Entrance Animation
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const heroTag = document.getElementById('hero-tag');
+            const heroTitle = document.getElementById('hero-title');
+            const heroDesc = document.getElementById('hero-desc');
+            
+            if(heroTag) {
+                heroTag.style.opacity = '1';
+                heroTag.style.transform = 'translateY(0)';
+            }
+            if(heroTitle) {
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }
+            if(heroDesc) {
+                heroDesc.style.opacity = '1';
+                heroDesc.style.transform = 'translateY(0)';
+            }
+        }, 500);
+    });
+
+    // Simple Parallax for Hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroImage = document.querySelector('header img:not([style*="display: none"])');
+        const heroText = document.getElementById('hero-content');
+        
+        if (scrolled < window.innerHeight && heroImage && heroText) {
+            heroImage.style.transform = `scale(1.05) translateY(${scrolled * 0.1}px)`;
+            heroText.style.transform = `translateY(${scrolled * 0.3}px)`;
+            heroText.style.opacity = 1 - (scrolled / (window.innerHeight * 0.8));
+        }
+    });
+
+    // Intersection Observer for Section Fades
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in-section').forEach((section) => {
+        section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000');
+        observer.observe(section);
+    });
+
+    // Gallery Lightbox
+    function openLightbox(el) {
+        const img = el.querySelector('img');
+        const overlaySpan = el.querySelector('.gallery-overlay span');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = overlaySpan ? overlaySpan.textContent : img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            e.currentTarget.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
+</body>
+</html>
